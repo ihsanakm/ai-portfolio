@@ -1,0 +1,8 @@
+
+{
+  "name": "AIPortfolio - Neural Design & Automation",
+  "description": "A high-end, minimalist portfolio for an AI Systems Architect featuring project showcases, expertise mapping, and a Gemini-powered inquiry system.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
