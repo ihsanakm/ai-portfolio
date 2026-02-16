@@ -9,15 +9,15 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
 }
 
-const Button: React.FC<ButtonProps> = ({ 
-  variant = ButtonVariant.PRIMARY, 
-  children, 
-  icon, 
-  className = '', 
-  ...props 
+const Button: React.FC<ButtonProps> = ({
+  variant = ButtonVariant.PRIMARY,
+  children,
+  icon,
+  className = '',
+  ...props
 }) => {
   const baseStyles = "inline-flex items-center justify-center font-bold tracking-tight uppercase transition-all duration-300 active:scale-95 disabled:opacity-50 disabled:pointer-events-none";
-  
+
   const variants = {
     [ButtonVariant.PRIMARY]: "bg-white text-black hover:bg-neutral-200 px-8 py-4 text-sm",
     [ButtonVariant.SECONDARY]: "bg-transparent border border-white/20 text-white hover:bg-white/5 px-8 py-4 text-sm",
@@ -27,8 +27,8 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button className={`${baseStyles} ${variants[variant]} ${className}`} {...props}>
-      <span>{children}</span>
       {icon && <span className="material-symbols-outlined ml-2 text-[18px]">{icon}</span>}
+      <span>{children}</span>
     </button>
   );
 };

@@ -50,7 +50,7 @@ const App: React.FC = () => {
       <div className="bg-black min-h-screen text-white pb-24 animate-in fade-in duration-700">
 
         {/* Project Hero */}
-        <section className="relative w-full h-[70vh] flex flex-col justify-end">
+        <section className="relative w-full h-[90vh] flex flex-col justify-end">
           <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black opacity-90 transition-opacity duration-1000" />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
           <div className="relative max-w-5xl mx-auto w-full px-6 pb-20">

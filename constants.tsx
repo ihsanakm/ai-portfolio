@@ -46,9 +46,9 @@ export const PROJECTS: Project[] = [
     description: 'A modern, responsive project management application designed to streamline team collaboration with an intuitive Kanban interface.',
     challenge: 'Building a robust task management system that supports drag-and-drop functionality, file attachments via cloud storage, role-based permissions, and real-time progress tracking across multiple projects.',
     solution: 'Developed a comprehensive Kanban board using dnd-kit for smooth drag-and-drop, integrated Supabase Storage for file management, implemented role-based authentication with distinct Admin and Member roles, and created an admin dashboard with real-time statistics and CSV reporting capabilities.',
-    image: '/public/images/taskboard/image.png',
+    image: '/images/taskboard/image.png',
     gallery: [
-      '/public/images/taskboard/image2.png'
+      '/images/taskboard/image2.png'
     ],
     techStack: ['Next.js 16', 'React 19', 'TypeScript', 'Supabase', 'CSS Modules', '@dnd-kit', 'lucide-react'],
     features: [
@@ -66,7 +66,7 @@ export const PROJECTS: Project[] = [
   {
     id: 'flood-relief',
     link: 'https://collection-point-flood.vercel.app/',
-    title: 'Flood Relief Platform',
+    title: 'Flood Relief',
     category: ['Crisis Management', 'Mapping'],
     year: '2026',
     role: 'Full-Stack Developer',
@@ -74,9 +74,9 @@ export const PROJECTS: Project[] = [
     description: 'A comprehensive flood relief coordination platform designed to connect affected communities with resources and volunteers during crisis situations.',
     challenge: 'Creating an interactive mapping system for real-time tracking of relief collection points, incident reporting, and resource management while ensuring the platform remains accessible and performant during high-traffic emergency scenarios.',
     solution: 'Implemented an interactive Leaflet-based map with real-time markers for collection points and incidents, built a robust reporting system for community submissions, developed an admin dashboard with role-based permissions (Super Admin, Admin, Read-Only), and optimized for server-side rendering to ensure fast load times.',
-    image: '/public/images/floodrelief/image.png',
+    image: '/images/floodrelief/image.png',
     gallery: [
-      '/public/images/floodrelief/image2.png'
+      '/images/floodrelief/image2.png'
     ],
     techStack: ['Next.js 16', 'Tailwind v4', 'Supabase', 'Leaflet', 'TypeScript', 'PostgreSQL'],
     features: [
