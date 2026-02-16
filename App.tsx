@@ -36,7 +36,6 @@ const App: React.FC = () => {
   }, [handleHashChange]);
 
   const navigateToProject = (id: string) => {
-    console.log(id)
     window.location.hash = `project/${id}`;
   };
 
@@ -49,7 +48,6 @@ const App: React.FC = () => {
   if (selectedProjectId && currentProject) {
     return (
       <div className="bg-black min-h-screen text-white pb-24 animate-in fade-in duration-700">
-        {/* <Header /> */}
 
         {/* Project Hero */}
         <section className="relative w-full h-[70vh] flex flex-col justify-end">
@@ -178,175 +176,119 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className="bg-black min-h-screen animate-in fade-in duration-700">
+    <div className="bg-black min-h-screen">
       <Header />
+      <div className="animate-in fade-in duration-700">
 
-      {/* Hero Section */}
-      <main className="relative pt-32 pb-24 md:pt-48 md:pb-48 px-6 md:px-12">
-        <section className="max-w-7xl mx-auto w-full flex flex-col items-start gap-12" id="home">
-          <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/5 border border-white/10">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
-            </span>
-            <span className="text-[10px] font-bold uppercase tracking-widest">Available for Full-Stack Projects</span>
+        {/* Hero Section */}
+        <main className="relative pt-32 pb-24 md:pt-48 md:pb-48 px-6 md:px-12">
+          <section className="max-w-7xl mx-auto w-full flex flex-col items-start gap-12" id="home">
+            <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/5 border border-white/10">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+              </span>
+              <span className="text-[10px] font-bold uppercase tracking-widest">Available for Full-Stack Projects</span>
+            </div>
+            <h1 className="text-4xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.9] uppercase italic max-w-6xl">
+              Building <span className="text-white/20 hover:text-white transition-all cursor-default underline decoration-1 underline-offset-[20px]">Modern Web</span> Applications.
+            </h1>
+            <p className="text-xl md:text-2xl text-white/50 max-w-2xl font-light leading-relaxed">
+              Full-stack developer specializing in Next.js, React, and Supabase. Creating seamless user experiences with cutting-edge technologies and scalable architectures.
+            </p>
+            <div className="flex flex-wrap gap-6 pt-6">
+              <Button variant={ButtonVariant.PRIMARY} icon="arrow_forward" onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}>
+                View Work
+              </Button>
+              <Button variant={ButtonVariant.SECONDARY} onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}>
+                About Me
+              </Button>
+            </div>
+          </section>
+
+          {/* Scroll Indicator */}
+          <div className="absolute bottom-12 right-12 hidden lg:flex flex-col items-center gap-6 animate-pulse">
+            <div className="w-px h-24 bg-gradient-to-b from-white to-transparent"></div>
+            <span className="text-[10px] font-bold uppercase tracking-[0.5em] rotate-90 origin-left translate-x-1.5 mt-8">Scroll</span>
           </div>
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.9] uppercase italic max-w-6xl">
-            Building <span className="text-white/20 hover:text-white transition-all cursor-default underline decoration-1 underline-offset-[20px]">Modern Web</span> Applications.
-          </h1>
-          <p className="text-xl md:text-2xl text-white/50 max-w-2xl font-light leading-relaxed">
-            Full-stack developer specializing in Next.js, React, and Supabase. Creating seamless user experiences with cutting-edge technologies and scalable architectures.
-          </p>
-          <div className="flex flex-wrap gap-6 pt-6">
-            <Button variant={ButtonVariant.PRIMARY} icon="arrow_forward" onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}>
-              View Work
+        </main>
+
+        {/* Projects Grid */}
+        <section className="max-w-7xl mx-auto px-6 md:px-12 py-32 border-t border-white/10" id="work">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8">
+            <div className="space-y-6">
+              <span className="font-bold text-[10px] uppercase tracking-[0.4em] text-white/40">Portfolio Highlights</span>
+              <h2 className="text-4xl md:text-6xl font-bold tracking-tight">Selected Work</h2>
+            </div>
+            <Button variant={ButtonVariant.LINK} icon="trending_flat">
+              See All Work
             </Button>
-            <Button variant={ButtonVariant.SECONDARY} onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}>
-              About Me
-            </Button>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-32">
+            {PROJECTS.map(project => (
+              <ProjectCard key={project.id} project={project} onClick={navigateToProject} />
+            ))}
           </div>
         </section>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-12 right-12 hidden lg:flex flex-col items-center gap-6 animate-pulse">
-          <div className="w-px h-24 bg-gradient-to-b from-white to-transparent"></div>
-          <span className="text-[10px] font-bold uppercase tracking-[0.5em] rotate-90 origin-left translate-x-1.5 mt-8">Scroll</span>
-        </div>
-      </main>
-
-      {/* Projects Grid */}
-      <section className="max-w-7xl mx-auto px-6 md:px-12 py-32 border-t border-white/10" id="work">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8">
-          <div className="space-y-6">
-            <span className="font-bold text-[10px] uppercase tracking-[0.4em] text-white/40">Portfolio Highlights</span>
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tight">Selected Work</h2>
-          </div>
-          <Button variant={ButtonVariant.LINK} icon="trending_flat">
-            See All Work
-          </Button>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-32">
-          {PROJECTS.map(project => (
-            <ProjectCard key={project.id} project={project} onClick={navigateToProject} />
-          ))}
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section className="bg-surface py-32 border-y border-white/10" id="about">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-20">
-          <div className="lg:col-span-5 relative group">
-            <div className="aspect-[4/5] bg-black/20 rounded-xl overflow-hidden">
-              <FloatingShape />
-            </div>
-          </div>
-          <div className="lg:col-span-7 flex flex-col justify-center space-y-12">
-            <h2 className="text-4xl md:text-6xl font-black tracking-tight leading-tight">
-              Crafting <span className="text-white/30">Digital Experiences</span> with Modern Tech.
-            </h2>
-            <div className="space-y-8 text-xl text-white/60 font-light leading-relaxed">
-              <p>
-                I'm a full-stack developer passionate about building scalable web applications that solve real-world problems. My expertise spans modern frameworks, cloud infrastructure, and creating intuitive user interfaces.
-              </p>
-              <p>
-                From booking systems to project management tools and crisis response platforms, I focus on delivering production-ready applications with clean architecture, robust authentication, and seamless user experiences.
-              </p>
-            </div>
-            <div className="grid grid-cols-2 gap-12 pt-12 border-t border-white/10">
-              <div className="space-y-4">
-                <span className="material-symbols-outlined text-accent">code</span>
-                <h4 className="font-bold uppercase tracking-widest text-sm">Full-Stack Development</h4>
-                <p className="text-xs text-white/40 leading-relaxed">Building end-to-end solutions with Next.js, React, TypeScript, and modern backend technologies.</p>
+        {/* About Section */}
+        <section className="bg-surface py-32 border-y border-white/10" id="about">
+          <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-20">
+            <div className="lg:col-span-5 relative group">
+              <div className="aspect-[4/5] bg-black/20 rounded-xl overflow-hidden">
+                <FloatingShape />
               </div>
-              <div className="space-y-4">
-                <span className="material-symbols-outlined text-accent">cloud</span>
-                <h4 className="font-bold uppercase tracking-widest text-sm">Cloud & Database</h4>
-                <p className="text-xs text-white/40 leading-relaxed">Leveraging Supabase, PostgreSQL, and cloud storage for scalable, real-time applications.</p>
+            </div>
+            <div className="lg:col-span-7 flex flex-col justify-center space-y-12">
+              <h2 className="text-4xl md:text-6xl font-black tracking-tight leading-tight">
+                Crafting <span className="text-white/30">Digital Experiences</span> with Modern Tech.
+              </h2>
+              <div className="space-y-8 text-xl text-white/60 font-light leading-relaxed">
+                <p>
+                  I'm a full-stack developer passionate about building scalable web applications that solve real-world problems. My expertise spans modern frameworks, cloud infrastructure, and creating intuitive user interfaces.
+                </p>
+                <p>
+                  From booking systems to project management tools and crisis response platforms, I focus on delivering production-ready applications with clean architecture, robust authentication, and seamless user experiences.
+                </p>
+              </div>
+              <div className="grid grid-cols-2 gap-12 pt-12 border-t border-white/10">
+                <div className="space-y-4">
+                  <span className="material-symbols-outlined text-accent">code</span>
+                  <h4 className="font-bold uppercase tracking-widest text-sm">Full-Stack Development</h4>
+                  <p className="text-xs text-white/40 leading-relaxed">Building end-to-end solutions with Next.js, React, TypeScript, and modern backend technologies.</p>
+                </div>
+                <div className="space-y-4">
+                  <span className="material-symbols-outlined text-accent">cloud</span>
+                  <h4 className="font-bold uppercase tracking-widest text-sm">Cloud & Database</h4>
+                  <p className="text-xs text-white/40 leading-relaxed">Leveraging Supabase, PostgreSQL, and cloud storage for scalable, real-time applications.</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Contact Section */}
-      {/* <section className="max-w-4xl mx-auto px-6 py-32" id="contact">
-        <div className="text-center space-y-8 mb-20">
-          <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase italic">Let's Work Together</h2>
-          <p className="text-white/40 max-w-lg mx-auto text-lg">Have a project in mind? Let's connect and build something amazing.</p>
-        </div>
+        {/* Contact Section */}
 
-        <form onSubmit={handleInquiry} className="space-y-12 border-y border-white/10 py-20" noValidate>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div className="flex flex-col gap-2">
-              <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/40">Name</label>
-              <input
-                type="text"
-                className={`bg-transparent border-0 border-b ${errors.name ? 'border-red-500' : 'border-white/20'} focus:border-white focus:ring-0 px-0 py-4 transition-all placeholder:text-neutral-900`}
-                placeholder="Identification Required"
-                value={formState.name}
-                onChange={e => handleInputChange('name', e.target.value)}
-              />
-              {errors.name && <span className="text-[9px] font-bold uppercase tracking-widest text-red-500 mt-1">{errors.name}</span>}
+        {/* Footer */}
+
+        {/* Footer */}
+        <footer id="footer" className="border-t border-white/5 py-16 px-6 md:px-12 bg-black">
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
+            <div className="text-[10px] font-bold tracking-[0.4em] text-white/20 uppercase">
+              © {new Date().getFullYear()} Portfolio — Full-Stack Development
             </div>
-            <div className="flex flex-col gap-2">
-              <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/40">Email</label>
-              <input
-                type="email"
-                className={`bg-transparent border-0 border-b ${errors.email ? 'border-red-500' : 'border-white/20'} focus:border-white focus:ring-0 px-0 py-4 transition-all placeholder:text-neutral-900`}
-                placeholder="Transmission Endpoint"
-                value={formState.email}
-                onChange={e => handleInputChange('email', e.target.value)}
-              />
-              {errors.email && <span className="text-[9px] font-bold uppercase tracking-widest text-red-500 mt-1">{errors.email}</span>}
+            <div className="flex gap-12">
+              {SOCIAL_LINKS.map(social => (
+                <a key={social.label} href={social.href} target="_blank" className="text-[10px] font-bold uppercase tracking-widest text-white/40 hover:text-white transition-colors">{social.label}</a>
+              ))}
+            </div>
+            <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-accent">
+              <span className="size-1.5 rounded-full bg-accent animate-ping"></span>
+              System Active
             </div>
           </div>
-          <div className="flex flex-col gap-2">
-            <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/40">Message</label>
-            <textarea
-              rows={4}
-              className={`bg-transparent border-0 border-b ${errors.message ? 'border-red-500' : 'border-white/20'} focus:border-white focus:ring-0 px-0 py-4 transition-all placeholder:text-neutral-900`}
-              placeholder="Describe your intent..."
-              value={formState.message}
-              onChange={e => handleInputChange('message', e.target.value)}
-            />
-            {errors.message && <span className="text-[9px] font-bold uppercase tracking-widest text-red-500 mt-1">{errors.message}</span>}
-          </div>
-
-          <div className="flex flex-col items-center gap-10">
-            {aiFeedback && (
-              <div className={`text-xs font-mono tracking-widest ${Object.keys(errors).length > 0 ? 'text-red-500 bg-red-500/5 border-red-500/20' : 'text-accent bg-accent/5 border-accent/20'} p-6 border w-full text-center animate-pulse`}>
-                &gt; {aiFeedback}
-              </div>
-            )}
-            <Button
-              type="submit"
-              className="w-full md:w-auto min-w-[300px]"
-              icon={isAnalyzing ? 'sync' : 'arrow_forward'}
-              disabled={isAnalyzing}
-            >
-              {isAnalyzing ? 'Analyzing Request...' : 'Initialize Inquiry'}
-            </Button>
-          </div>
-        </form>
-      </section> */}
-
-      {/* Footer */}
-      <footer id="footer" className="border-t border-white/5 py-16 px-6 md:px-12 bg-black">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
-          <div className="text-[10px] font-bold tracking-[0.4em] text-white/20 uppercase">
-            © {new Date().getFullYear()} Portfolio — Full-Stack Development
-          </div>
-          <div className="flex gap-12">
-            {SOCIAL_LINKS.map(social => (
-              <a key={social.label} href={social.href} target="_blank" className="text-[10px] font-bold uppercase tracking-widest text-white/40 hover:text-white transition-colors">{social.label}</a>
-            ))}
-          </div>
-          <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-accent">
-            <span className="size-1.5 rounded-full bg-accent animate-ping"></span>
-            System Active
-          </div>
-        </div>
-      </footer>
+        </footer>
+      </div>
     </div>
   );
 };
